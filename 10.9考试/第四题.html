@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //a
+      function fetchData() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("秒后");
+          }, 1000);
+        });
+      }
+      function fetchData1() {
+        return new Promise((resolve, reject) => {
+          fetchData()
+            .then((data) => {
+              resolve(data);
+            })
+            .catch((err) => {
+              reject(err);
+            });
+        });
+      }
+      fetchData1()
+        .then((data) => {
+          console.log("1" + data);
+        })
+        .catch((err) => {
+          console.log("2" + err);
+        });
+      //b
+      function fun() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("啥时候同时执行啊");
+          }, 1500);
+        });
+      }
+      function fun1() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("不知道啊  你知道不");
+          }, 2000);
+        });
+      }
+      Promise.all([fun(), fun2()])
+        .then((data) => {
+          console.log("1秒?", data[0]);
+          console.log("2秒?", data[1]);
+        })
+        .catch((error) => {
+          console.log("谁知道呢", error);
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj1 = { a: 1, b: 2, c: { a: 2 } };
+      let obj2 = { a: 1, b: 2, c: { a: 4 } };
+      let obj3 = { a: 1, b: 2, c: { a: 2 } };
+      function obj(one, two) {
+        const obj1 = Object.keys(one);
+        const obj2 = Object.keys(two);
+        if (obj1.length !== obj2.length) {
+          return false;
+        }
+        return true;
+      }
+      console.log(obj(obj1, obj2));
+      console.log(obj(obj1, obj3));
+    </script>
+  </body>
+</html>
